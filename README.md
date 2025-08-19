@@ -1,31 +1,115 @@
-# ▲ / next-forge
+# Mini Event Manager
 
-**Production-grade Turborepo template for Next.js apps.**
+A small event manager app built with **Next.js**, **Tailwind CSS**, and **Framer Motion** inside a [Turborepo](https://turbo.build/repo).
 
-<div>
-  <img src="https://img.shields.io/npm/dy/next-forge" alt="" />
-  <img src="https://img.shields.io/npm/v/next-forge" alt="" />
-  <img src="https://img.shields.io/github/license/vercel/next-forge" alt="" />
-</div>
+The app allows you to:
+- Add events with a **name** and **date**
+- View a list of events
+- Delete events
+- Search events by name
+- Data persists in **localStorage**
 
-## Overview
+The landing page includes a spotlight effect built with **Framer Motion**, and a button to navigate to the `/events` page.
 
-[next-forge](https://github.com/vercel/next-forge) is a [Next.js](https://nextjs.org/) project boilerplate for modern web application. It is designed to be a comprehensive starting point for new apps, providing a solid, opinionated foundation with a minimal amount of configuration.
+---
 
-## Getting Started
+## 🚀 Getting Started
 
-Clone the repo using:
-
-```sh
-npx next-forge@latest init
+### 1. Clone the Repository
+```bash
+git clone <your-repo-url>
+cd mini-event-manager
 ```
 
-Then read the [docs](https://www.next-forge.com/docs) for more information.
+### 2. Install Dependencies
 
-## Contributors
+We use [pnpm](https://pnpm.io/) for package management:
 
-<a href="https://github.com/vercel/next-forge/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=vercel/next-forge" />
-</a>
+```bash
+pnpm install
+```
 
-Made with [contrib.rocks](https://contrib.rocks).
+### 3. Run the App
+
+Start the `mini-events` app in dev mode:
+
+```bash
+pnpm turbo run dev --filter=mini-events
+```
+
+Then open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## 📂 Project Structure
+
+```
+mini-event-manager/
+├── apps/
+│   └── mini-events/       # Next.js app for Mini Event Manager
+│       ├── app/
+│       │   ├── page.tsx   # Landing page (Spotlight + Button)
+│       │   └── events/    # Events page with form + list
+│       └── package.json
+├── package.json
+└── turbo.json
+```
+
+---
+
+## 🛠️ Tech Stack
+
+* **Next.js (App Router)**
+* **React**
+* **Tailwind CSS**
+* **Framer Motion**
+* **pnpm + Turborepo**
+
+---
+
+## ✨ Features
+
+* `/` (Landing Page)
+
+  * Spotlight effect (Framer Motion)
+  * Description of the app
+  * "Go to Events" button → redirects to `/events`
+
+* `/events`
+
+  * Form with **Event Name** and **Date** (both required)
+  * Add new events
+  * Display list of events
+  * Delete button for each event
+  * Search filter
+  * Data saved in `localStorage`
+  * Mobile-friendly UI with Tailwind
+
+---
+
+## ⚡ Scripts
+
+Run inside the repo root:
+
+```bash
+# Install dependencies
+pnpm install
+
+# Run dev server for mini-events app
+pnpm turbo run dev --filter=mini-events
+
+# Build
+pnpm turbo run build --filter=mini-events
+```
+
+---
+
+## 📸 Preview
+
+Landing Page (Spotlight effect + Button):
+➡ `/`
+
+Events Manager Page:
+➡ `/events`
+
+---
