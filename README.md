@@ -17,7 +17,7 @@ The landing page includes a spotlight effect built with **Framer Motion**, and a
 
 ### 1. Clone the Repository
 ```bash
-git clone 
+git clone https://github.com/vasu2901/Mini-Event-Manager
 cd mini-event-manager
 ```
 
@@ -31,7 +31,7 @@ pnpm install
 
 ### 3. Run the App
 
-Start the `mini-events` app in dev mode:
+Start the `mini-events` app in dev mode
 
 ```bash
 pnpm turbo run dev --filter=mini-events
