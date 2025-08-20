@@ -2,7 +2,8 @@
 
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import {} from 'react';
+import type React from 'react';
+import { } from 'react';
 
 const LandingCard = () => {
   const router = useRouter();
@@ -22,6 +23,7 @@ const LandingCard = () => {
   const background = useMotionTemplate`radial-gradient(650px circle at ${mouseX}px ${mouseY}px, rgba(14, 165, 233, 0.15), transparent 80%)`;
 
   return (
+    // biome-ignore lint/nursery/noStaticElementInteractions: <explanation>
     <div
       className="group relative max-w-xl rounded-xl border border-white/10 bg-gray-900 px-8 py-16 shadow-2xl"
       onMouseMove={handleMouseMove}

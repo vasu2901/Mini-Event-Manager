@@ -1,7 +1,6 @@
 'use client';
 
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
-import { useRouter } from 'next/navigation';
 import type React from 'react';
 import { useEffect, useState } from 'react';
 
@@ -21,9 +20,6 @@ const LandingCard = () => {
     setEvents(prevEvents);
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem('AllEvents', JSON.stringify(events));
-  }, [events]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,20 +28,24 @@ const LandingCard = () => {
     }
 
     const newEvent: Event = { name: eventName.trim(), date: eventDate };
-    setEvents((prev) => [...prev, newEvent]);
+    const all_events = [...events, newEvent]
+    setEvents(all_events);
+    localStorage.setItem('AllEvents', JSON.stringify(all_events));
 
     setEventName('');
     setEventDate('');
   };
 
   const handleDelete = (index: number) => {
-    setEvents((prev) => prev.filter((_, i) => i !== index));
+    const all_events = events.filter((_, i) => i !== index)
+    setEvents(all_events);
+    localStorage.setItem('AllEvents', JSON.stringify(all_events));
   };
 
   const filteredEvents = events.filter((e) =>
     e.name.toLowerCase().includes(search.toLowerCase())
   );
-  const router = useRouter();
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -62,6 +62,7 @@ const LandingCard = () => {
   const background = useMotionTemplate`radial-gradient(650px circle at ${mouseX}px ${mouseY}px, rgba(14, 165, 233, 0.15), transparent 80%)`;
 
   return (
+    // biome-ignore lint/nursery/noStaticElementInteractions: <explanation>
     <div
       className="group relative max-w-xl rounded-xl border border-white/10 bg-gray-900 px-32 py-16 shadow-2xl"
       onMouseMove={handleMouseMove}
@@ -71,7 +72,7 @@ const LandingCard = () => {
         style={{ background }}
       />
       <div className="relative z-10 text-center">
-        <h1 className="mb-4 text-center font-bold text-2xl text-white">Events</h1>
+        <h1 className='mb-4 text-center font-bold text-2xl text-white'>Events</h1>
 
         {/* Search */}
         <input
@@ -85,7 +86,7 @@ const LandingCard = () => {
         {/* Form */}
         <form
           onSubmit={handleSubmit}
-          className="mb-6 flex flex-col gap-3 rounded bg-gray-50 p-4 shadow"
+          className="mb-6 flex flex-col gap-3 rounded bg-gray-500 p-4 shadow"
         >
           <input
             type="text"
@@ -127,7 +128,7 @@ const LandingCard = () => {
               <button
                 type="button"
                 onClick={() => handleDelete(index)}
-                className="text-red-500 hover:text-red-700"
+                className='bg-white text-red-500 hover:bg-red-400 hover:text-white'
               >
                 Delete
               </button>

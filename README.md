@@ -17,7 +17,7 @@ The landing page includes a spotlight effect built with **Framer Motion**, and a
 
 ### 1. Clone the Repository
 ```bash
-git clone <your-repo-url>
+git clone 
 cd mini-event-manager
 ```
 
